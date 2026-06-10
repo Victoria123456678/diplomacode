@@ -206,33 +206,35 @@ with tab4:
             except Exception as e:
                 st.error(f"Ошибка прогноза: {e}")
 
-        # ====================== TAB 5 ======================
+# ====================== TAB 5 ======================
 with tab5:
-    st.header("📈 05. Результаты и метрики")
-   
-    try:
-        with open('results/evaluation_results.pkl', 'rb') as f:
-            results = pickle.load(f)
-       
-        metrics_df = pd.DataFrame(results['metrics']).T.round(4)
-        st.dataframe(metrics_df, use_container_width=True)
-       
-        avg_r2 = 0.0
-        for col in metrics_df.columns:
-            if 'r²' in col.lower() or 'r2' in col.lower():
-                avg_r2 = metrics_df[col].mean()
-                break
-       
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Средний MAE", f"{metrics_df['MAE'].mean():.3f}")
-        col2.metric("Средний RMSE", f"{metrics_df['RMSE'].mean():.3f}")
-        col3.metric("Средний R²", f"{avg_r2:.3f}")
-       
-        st.success("Метрики загружены успешно")
-       
-    except Exception as e:
-        st.warning(f"Не удалось загрузить метрики: {e}")
-        st.info("Запустите 04_evaluation.ipynb")
+    st.header("📈 05. Результаты и метрики")
+    
+    try:
+        with open('results/evaluation_results.pkl', 'rb') as f:
+            results = pickle.load(f)
+        
+        metrics_df = pd.DataFrame(results['metrics']).T.round(4)
+        st.dataframe(metrics_df, use_container_width=True)
+        
+
+        avg_mae = metrics_df['MAE'].mean()
+        avg_rmse = metrics_df['RMSE'].mean()
+        
+  
+        r2_col = [col for col in metrics_df.columns if 'r2' in col.lower() or 'r²' in col.lower()]
+        avg_r2 = metrics_df[r2_col[0]].mean() if r2_col else 0.0
+        
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Средний MAE", f"{avg_mae:.3f}")
+        col2.metric("Средний RMSE", f"{avg_rmse:.3f}")
+        col3.metric("Средний R²", f"{avg_r2:.3f}")
+        
+        st.success("Метрики загружены успешно")
+        
+    except Exception as e:
+        st.warning(f"Не удалось загрузить метрики: {e}")
+        st.info("Запустите 04_evaluation.ipynb")
         
 st.markdown("---")
 st.markdown("""
