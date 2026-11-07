@@ -67,4 +67,11 @@ streamlit run app.py
 - Город: Москва
 
 Открыта к стажировкам и интересным задачам.
+### Скриншоты приложения
+<img width="966" height="426" alt="image" src="https://github.com/user-attachments/assets/3ecd63ed-be72-4c79-a084-c55c98ca1f4f" />
+<img width="973" height="444" alt="image" src="https://github.com/user-attachments/assets/d0d13e6e-6a34-4814-979b-64dd97c00060" />
+<img width="973" height="430" alt="image" src="https://github.com/user-attachments/assets/1bddcdee-8fa6-4ba7-bf73-1540aa0fad68" />
+<img width="973" height="372" alt="image" src="https://github.com/user-attachments/assets/54218b4a-ac10-4679-9f78-e72204d36b56" />
+<img width="973" height="388" alt="image" src="https://github.com/user-attachments/assets/df8d57ef-aef1-4a0a-b611-1024b0d5aec7" />
+<img width="973" height="360" alt="image" src="https://github.com/user-attachments/assets/075905dd-1b2c-4665-9ef7-f4c2e787b2df" />
 
